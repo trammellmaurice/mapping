@@ -9,7 +9,7 @@ def calcDistance(nodes, name1, name2):
     return math.sqrt(math.pow(x1 - x2, 2) + math.pow(y1 - y2, 2))
 
 def parse(dot_file, start_x, start_y, goal_x, goal_y):
-    f = open(dot_file, "r")
+    f = open(dot_file, "r",encoding = "utf8")
 
     line = f.readline()
     while "graph" not in line:
@@ -37,7 +37,7 @@ def parse(dot_file, start_x, start_y, goal_x, goal_y):
     #skip empty lines
     while line == "\n":
         line = f.readline()
-    
+
     #create adjacency matrix
     matrix = []
     for i in range(count):
@@ -76,7 +76,7 @@ def parse(dot_file, start_x, start_y, goal_x, goal_y):
     matrix[node_nums[min_name_start]][node_nums["start"]] = min_dist_start
     matrix[node_nums["goal"]][node_nums[min_name_goal]] = min_dist_goal
     matrix[node_nums[min_name_goal]][node_nums["goal"]] = min_dist_goal
-    
+
     return matrix
 
 dot_file = sys.argv[1]
